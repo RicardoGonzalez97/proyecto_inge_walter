@@ -1,0 +1,52 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <h1 class="custom-font right">Agregar
+                    <strong> Usuarios</strong></h1>
+
+            </div>
+            <form name="form" class="form-validation">
+                <div class="form-group">
+                    <div class="alert alert-danger" ng-repeat="error in errors">
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-hidden="true">&times;</button>
+                        {{error[0]}}
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="">Nombre del usuario</label>
+                        <input type="text" class="form-control" ng-model="user.nickname">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="">email</label>
+                        <input type="text" class="form-control" ng-model="user.email">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="">Tipo de Usuario</label>
+                        <input type="text" class="form-control" ng-model="user.user_type">
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                    <button type="button" ng-click="saveCategoryCourse()" class="btn m-b-xs btn-info"  ng-disabled="form.$invalid">
+                        <i class="fa fa-save"></i>  Guardar
+                    </button>
+                </div>
+            </form>
+
+
+        </section>
+
+    </div>
+</div>

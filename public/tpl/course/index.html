@@ -1,0 +1,143 @@
+<div class="page page-tables-bootstrap">
+    <script type="text/ng-template" id="CourseModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title custom-font">Actualizando Curso</h3>
+        </div>
+        <form  name="form" class="form-validation">
+            <div class="form-group">
+                  <div class="alert alert-danger" ng-repeat="error in errors">
+                       <button type="button" class="close" data-dismiss="alert"
+                                            aria-hidden="true">&times;</button>
+                                    {{error[0]}}
+                   </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="">Nombre del Curso</label>
+                    <input type="text" class="form-control" ng-model="curso.name"  required>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="">Evento</label>
+                    <select name="tipo" ng-model="curso.certificate_title"class="form-control"  required >
+                        <option selected="" disabled="" value="" >(Seleccionar)</option>
+                        <optgroup  label="Eventos ">
+                            <option ng-model="curso.certificate_title" value="Evento" >Simposio</option>
+                            <option ng-model="curso.certificate_title" value="Certificación">Conferencia</option>
+                            <option ng-model="curso.certificate_title" value="Taller">Taller</option>
+                            <option ng-model="curso.certificate_title" value="Cursos">Curso</option>
+                            <option ng-model="curso.certificate_title" value="Diplomado">Diplomado</option>
+                            <option ng-model="curso.certificate_title" value="Foro">Foro</option>
+                            <option ng-model="curso.certificate_title" value="Otro">Otro</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="">Palabras claves</label>
+                    <input type="text" multiple class="form-control"  placeholder="Introduce las palabras claves" ng-model="curso.keywords" required>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Hangouts</label>
+                            <input type="url" value="http://www.google.com/" placeholder="http://www.google.com/" class="form-control"  ng-model="curso.hangouts">
+                        </div>
+                    </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="">Descripción</label>
+                            <textarea ng-model="curso.description"
+                                      redactor="{plugins: ['table', 'video', 'alignment', 'iconic2']}" cols="30"
+                                      rows="10" required></textarea>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="">Cupo minimo</label>
+                    <input type="number"
+                           class="form-control  " ui-validate=" '$value >= 5' "
+                           ng-model="curso.quota_min"  placeholder="mayor a 5" >
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="">Cupo maximo</label>
+                    <input type="number"
+                           class="form-control " ui-validate=" '$value >= 12' "
+                           placeholder="mayor a 12" ng-model="curso.quota_max" required>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="">Duración</label>
+                    <input type="text" placeholder="Example: 4 Horas " class="form-control"  ng-model="curso.duracion" required>
+                </div>
+            </div>
+        </form>
+                <div class="modal-footer">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <button class="btn w-xs btn-danger btn-ef btn-ef-4 btn-ef-4c" ng-click="cancel()"><i
+                                    class="fa fa-arrow-left"></i> Cancelar
+                                <button class="btn w-xs btn-success btn-ef btn-ef-3 btn-ef-3c" ng-click="ok()"><i
+                                        class="fa fa-arrow-right"></i> Guardar
+                                </button>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    </script>
+</div>
+    <h1><strong>Mis Cursos</strong></h1>
+    <ul class="controls">
+        <a ui-sref="app.cursos.indexadd" class="btn btn-primary btn-success btn-group-lg"><i class="fa fa-plus"></i>
+            Agregar</a>
+    </ul>
+ <section class="tile">
+            <div class="tile-body table-custom">
+                <div class="row">
+                    <div class="col-lg-8">
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="form-group right">
+                            <label for="">Buscar</label>
+                            <input type="text" class="form-control" placeholder="Buscar" ng-model="params.search">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Status</th>
+                            <th>Fecha de creación</th>
+                            <th>Administrar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr ng-repeat="item in cursos | filter : params.search">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <th><p   class="label" ng-class="{'label bg-danger':item.status==0,'label bg-success':item.status==1}">{{item.status==0?"Inactivo":"Activo"}}</p></th>
+                            <td >{{item.created_at}}</td>
+                            <td>
+                                <a class="text-success" ng-click="open(item)"><i class="fa fa-pencil">
+                                    Actualizar</i></a>
+                                <a class="text-blue" ui-sref="app.cursos.inscripcion({id:item.id})"><i class="fa fa-eye"> Ver</i></a>
+
+                                <a class="text-danger" ng-click="remove(item)"><i class="fa fa-trash"> Eliminar</i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+ </section>
+

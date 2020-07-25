@@ -1,0 +1,120 @@
+<div class="wrapper-md lter">
+            <script type="text/ng-template" id="ConvenedModal.html">
+                <div class="modal-header">
+                    <h3 class="modal-title custom-font">Actualizando Linea</h3>
+                </div>
+                        <form name="form" class="form-validation">
+                            <div class="form-group">
+                                <div class="alert alert-danger" ng-repeat="error in errors">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-hidden="true">&times;</button>
+                                    {{error[0]}}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Nombre de la convocatoria</label>
+                                    <input type="text" class="form-control" ng-model="convocatoria.name">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group" >
+                                    <label for="">Fecha de Inicio</label>
+                                    <input class="form-control" ng-model="convocatoria.starting_date" type="date" required>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group" >
+                                    <label for="">Fecha de Finalización</label>
+                                    <input class="form-control" ng-model="convocatoria.end_date" type="date" required>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <select ng-model="convocatoria.status" class="form-control">
+                                        <option value="1">Activo</option>
+                                        <option value="0">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="">Descripción</label>
+                                 <textarea ng-model="convocatoria.description"
+                                     redactor="{plugins: ['table', 'video', 'alignment', 'iconic2']}" cols="30"
+                                     rows="10" required></textarea>
+                                </div>
+                            </div>
+                            <!--Fin de Descripcion-->
+                        </form>
+    </div>
+                <div class="modal-footer">
+                    <div class="col-lg-4">
+                        <button class="btn w-xs btn-danger btn-ef btn-ef-4 btn-ef-4c" ng-click="cancel()"><i
+                                class="fa fa-arrow-left"></i> Cancelar
+                            <button class="btn w-xs btn-success btn-ef btn-ef-3 btn-ef-3c" ng-click="ok()"><i
+                                    class="fa fa-arrow-right"></i> Guardar
+                            </button>
+                        </button>
+                    </div>
+                </div>
+            </script>
+    </div>
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <h1 class="custom-font">
+                    <strong>Convocatoria</strong></h1>
+                <ul class="controls">
+                        <a ui-sref="app.revista.convocatoriaadd" class="btn btn-primary btn-success btn-group-lg"><i class="fa fa-plus"></i>
+                            Agregar</a>
+                </ul>
+            </div>
+            <div class="tile-body table-custom">
+                <div class="row">
+                    <div class="col-lg-8">
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="form-group right">
+                            <label for="">Buscar</label>
+                            <input type="text" class="form-control" placeholder="Buscar" ng-model="params.search">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Status</th>
+                            <th>Fecha de creación</th>
+                            <th>Administrar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr ng-repeat="item in convocatorias| filter : params.search">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <th><p   class="label" ng-class="{'label bg-danger':item.status==0,'label bg-success':item.status==1}">{{item.status==0?"Inactivo":"Activo"}}</p></th>
+                            <td >{{item.created_at}}</td>
+                            <td>
+                                <a class="text-success" ng-click="open(item)"><i class="fa fa-pencil">
+                                    Actualizar</i></a>
+                                <a class="text-blue"><i class="fa fa-eye"> Ver</i></a>
+
+                                <a class="text-danger" ng-click="remove(item)"><i class="fa fa-trash"> Eliminar</i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

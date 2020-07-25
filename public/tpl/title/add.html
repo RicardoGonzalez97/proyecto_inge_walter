@@ -1,0 +1,144 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <h1 class="custom-font right">Agregar
+                    <strong> Título</strong></h1>
+
+            </div>
+            <form name="form" class="form-validation">
+                <div class="form-group">
+                    <div class="alert alert-danger" ng-repeat="error in errors">
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-hidden="true">&times;</button>
+                        {{error[0]}}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Grado Académico</label>
+                        <select name="Seleccione un grado" ng-model="title.degree"class="form-control"  required >
+                            <optgroup  label="Grados ">
+                                <option ng-model="title.degree" value="Licenciatura" >Licenciatura</option>
+                                <option ng-model="title.degree" value="Especialidad">Especialidad</option>
+                                <option ng-model="title.degree" value="Maestría">Maestría</option>
+                                <option ng-model="title.degree" value="Doctorado">Doctorado</option>
+                                <option ng-model="title.degree" value="Posdoctorado">Posdoctorado</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Títutlo del grado</label>
+                        <input type="text" class="form-control" ng-model="title.title_degree">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">¿Fue por Licencia-Beca Comisión?</label>
+                        <select name="Seleccione una opción" ng-model="title.license"class="form-control"  required >
+                            <optgroup  label="Opciones ">
+                                <option ng-model="title.license" value="Licencia" >Licencia</option>
+                                <option ng-model="title.license" value="Grado">Grado</option>
+                                <option ng-model="title.license" value="Comisión">Comisión</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Número de cédula</label>
+                        <input type="text" class="form-control" ng-model="title.credential_number">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Institución que otorgó el grado</label>
+                        <input type="text" class="form-control" ng-model="title.institution_degree">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Fecha de obtención de grado</label>
+                        <input type="date" class="form-control" ng-model="title.date_degree">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">País</label>
+                        <input type="text" class="form-control" ng-model="title.country">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Institución donde estudió</label>
+                        <input type="text" class="form-control" ng-model="title.institution">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Matrícula o número de control</label>
+                        <input type="text" class="form-control" ng-model="title.registration">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Promedio</label>
+                        <input type="number" class="form-control" ng-model="title.average">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Fecha de inicio de créditos</label>
+                        <input type="date" class="form-control" ng-model="title.credits_start_date">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Fecha de terminación de créditos</label>
+                        <input type="date" class="form-control" ng-model="title.credits_finish_date">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Sector estratégico</label>
+                        <select name="Seleccione un sector" ng-model="title.sector"class="form-control"  required >
+                            <optgroup  label="Sector ">
+                                <option ng-model="title.sector" value="Sector" >Sector</option>
+                                </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Area prioritaria del país</label>
+                        <select name="Seleccione un area" ng-model="title.priority_area"class="form-control"  required >
+                            <optgroup  label="Area ">
+                                <option ng-model="title.priority_area" value="Area" >Area</option>
+                                </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Area del conocimiento</label>
+                        <select name="Seleccione un area" ng-model="title.knowledge_area"class="form-control"  required >
+                            <optgroup  label="Area ">
+                                <option ng-model="title.knowledge_area" value="Area" >Area</option>
+                                </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <button type="button" ng-click="saveTitle()" class="btn m-b-xs btn-info"  ng-disabled="form.$invalid">
+                        <i class="fa fa-save"></i>  Guardar
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+diff a/public/js/main.js b/public/js/main.js	(rejected hunks)
+@@ -6,12 +6,12 @@
+       isIE && angular.element($window.document.body).addClass('ie');
+       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
+       $scope.user={
+-        name:"Manuel de Jesus Toala ",
++        name:"Daniel Eduardo Pérez ",
+         img:"img/a5.jpg"
+       }
+       // config
+       $scope.app = {
+-        name: 'BINGLE',
++        name: 'GICDT',
+         version: '1.0.0',
+         // for chart colors
+         color: {

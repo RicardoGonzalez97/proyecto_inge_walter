@@ -1,0 +1,195 @@
+<div class="page page-tables-bootstrap">
+    <script type="text/ng-template" id="TitleModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title custom-font">Actualizando Título</h3>
+        </div>
+        <form name="form" class="form-validation">
+            <div class="form-group">
+                <div class="alert alert-danger" ng-repeat="error in errors">
+                    <button type="button" class="close" data-dismiss="alert"
+                            aria-hidden="true">&times;</button>
+                    {{error[0]}}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Grado Académico</label>
+                    <select name="Seleccione un grado" ng-model="title.degree"class="form-control"  required >
+                        <optgroup  label="Grados ">
+                            <option ng-model="title.degree" value="Licenciatura" >Licenciatura</option>
+                            <option ng-model="title.degree" value="Especialidad">Especialidad</option>
+                            <option ng-model="title.degree" value="Maestría">Maestría</option>
+                            <option ng-model="title.degree" value="Doctorado">Doctorado</option>
+                            <option ng-model="title.degree" value="Posdoctorado">Posdoctorado</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Títutlo del grado</label>
+                    <input type="text" class="form-control" ng-model="title.title_degree">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">¿Fue por Licencia-Beca Comisión?</label>
+                    <select name="Seleccione una opción" ng-model="title.license"class="form-control"  required >
+                        <optgroup  label="Opciones ">
+                            <option ng-model="title.license" value="Licencia" >Licencia</option>
+                            <option ng-model="title.license" value="Grado">Grado</option>
+                            <option ng-model="title.license" value="Comisión">Comisión</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Número de cédula</label>
+                    <input type="text" class="form-control" ng-model="title.credential_number">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Institución que otorgó el grado</label>
+                    <input type="text" class="form-control" ng-model="title.institution_degree">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Fecha de obtención de grado</label>
+                    <input type="date" class="form-control" ng-model="title.date_degree">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">País</label>
+                    <input type="text" class="form-control" ng-model="title.country">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Institución donde estudió</label>
+                    <input type="text" class="form-control" ng-model="title.institution">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Matrícula o número de control</label>
+                    <input type="text" class="form-control" ng-model="title.registration">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Promedio</label>
+                    <input type="number" class="form-control" ng-model="title.average">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Fecha de inicio de créditos</label>
+                    <input type="date" class="form-control" ng-model="title.credits_start_date">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Fecha de terminación de créditos</label>
+                    <input type="date" class="form-control" ng-model="title.credits_finish_date">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Sector estratégico</label>
+                    <select name="Seleccione un sector" ng-model="title.sector"class="form-control"  required >
+                        <optgroup  label="Sector ">
+                            <option ng-model="title.sector" value="Sector" >Sector</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Area prioritaria del país</label>
+                    <select name="Seleccione un area" ng-model="title.priority_area"class="form-control"  required >
+                        <optgroup  label="Area ">
+                            <option ng-model="title.priority_area" value="Area" >Area</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="">Area del conocimiento</label>
+                    <select name="Seleccione un area" ng-model="title.knowledge_area"class="form-control"  required >
+                        <optgroup  label="Area ">
+                            <option ng-model="title.knowledge_area" value="Area" >Area</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <div class="col-lg-4">
+                <button class="btn w-xs btn-danger btn-ef btn-ef-4 btn-ef-4c" ng-click="cancel()"><i
+                        class="fa fa-arrow-left"></i> Cancelar
+                    <button class="btn w-xs btn-success btn-ef btn-ef-3 btn-ef-3c" ng-click="ok()"><i
+                            class="fa fa-arrow-right"></i> Guardar
+                    </button>
+                </button>
+            </div>
+        </div>
+    </script>
+
+    <section class="tile">
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font">
+                <strong>Titulo</strong></h1>
+            <ul class="controls">
+                <a ui-sref="app.cvu.tituloadd" class="btn btn-primary btn-success btn-group-lg"><i class="fa fa-plus"></i>
+                    Agregar</a>
+            </ul>
+        </div>
+        <div class="tile-body table-custom">
+            <div class="row">
+                <div class="col-lg-8">
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group right">
+                        <label for="">Buscar</label>
+                        <input type="text" class="form-control" placeholder="Buscar" ng-model="params.search">
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Status</th>
+                        <th>Fecha de creación</th>
+                        <th>Administrar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="item in titulos | filter : params.search">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <th><p   class="label" ng-class="{'label bg-danger':item.status==0,'label bg-success':item.status==1}">{{item.status==0?"Inactivo":"Activo"}}</p></th>
+                        <td >{{item.created_at}}</td>
+                        <td>
+                            <a class="text-success" ng-click="open(item)"><i class="fa fa-pencil">
+                                Actualizar</i></a>
+                            <a class="text-blue"><i class="fa fa-eye"> Ver</i></a>
+
+                            <a class="text-danger" ng-click="remove(item)"><i class="fa fa-trash"> Eliminar</i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

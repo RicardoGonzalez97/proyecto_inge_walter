@@ -1,0 +1,95 @@
+<section class="sub-banner sub-banner-course">
+    <div class="awe-static bg-congresos"></div>
+    <div class="overlay-color-3"></div>
+    <div class="container">
+        <div class="sub-banner-content">
+            <h2 class="big4 col-md-8 text-center text-success" style="color: transparent">Bolsa de trabajo y <br>Currículum
+                Vitae Único (CVU)</h2>
+        </div>
+    </div>
+</section>
+<!--
+<section id="mc-section-1" class="mc-section-1 section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="image-author col-md-3">
+                <center><img ng-src="/sitio/images/feature/cursos.des.png" alt=""></center>
+            </div>
+            <div class="col-md-7">
+                <div class="mc-section-1-content-1">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <p class="big1" style="color:transparent">hola</p>
+                        <p class="big1 text-justify" style="color: black;">
+                            Cursos y talleres está diseñada para ofrecerte la mejor educación basada en métodos de
+                            enseñanza, probados por los mejores investigadores.
+                            <br>Es la mejor opción de educación con gran contenido, donde podrás dar cursos de temas que
+                            dominas y recibirás conocimiento de grandes ponentes capacitados.
+                            <br>Te ofrecemos la mejor opción.
+                        </p>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+<section id="mc-section-3" class="mc-section-3 section">
+    <div class="container">
+        <!-- FEATURE -->
+        <div class="feature-course">
+            <h4 class="title-box text-uppercase">Cursos </h4>
+            <a href="/app#/app/cursos/view/" class="all-course mc-btn btn-style-1">Ver todos</a>
+            <div class="container">
+                <div class="container" >
+                    <div class="mc-item mc-item-1 col-lg-6"  ng-repeat="course in courses">
+                        <a href="/app#/app/cursos/inscripcion/{{course.id}}">
+                            <div class="image-heading">
+                                <img ng-src="/files/{{course.image || 'noimage.png'}}" alt="">
+                            </div>
+                        </a>
+                        <div class="meta-categories"><a  href="#">{{course.category_course.name}}</a></div>
+                        <div class="content-item">
+                            <h4><a href="/app#/app/cursos/inscripcion/{{course.id}}">
+                                <font class="cambioColor2 big1">
+                                    {{course.name}}
+                                </font>
+                            </a></h4>
+                            <div class="name-author">
+                                <a href="/app#/app/cursos/inscripcion/{{course.id}}">
+                                    <font style="color:orange">
+                                        {{course.author.name +" "+course.author.ap_pat+" "+course.author.ap_mat}}
+                                    </font>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ft-item">
+                            <i class="big0 text-center">{{course.start_date}}</i> <br>
+                            <div class="view-info">
+                                <i class="icon md-users">{{course.quota_min + "-" +course.quota_max}}</i>
+                            </div>
+                            <!-- <div class="comment-info">
+                                <i class="icon md-comment"></i>
+                                25
+                            </div> -->
+                            <div class="price">
+                                ${{course.price}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END / FEATURE -->
+    </div>
+</section>
+<script type="text/javascript" src="/sitio/js/scripts.js"></script>
+<script type="text/javascript">
+    $('.open-menu').on('click', function() {
+        $(this).toggleClass('toggle-active');
+//        console.log("Click");
+        $('.navigation .menu, .search-box').slideToggle(300);
+    });
+</script>

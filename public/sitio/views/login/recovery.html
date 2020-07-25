@@ -1,0 +1,45 @@
+<div class="login-content">
+    <div class="container w-xxl w-auto-xs">
+
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <h5 class=" text-center text-muted">Recuperar Contraseña.</h5>
+            <form name="form" class=" form-validation ">
+                <div class="row">
+                    <div class="text-danger wrapper text-center" ng-show="authError">
+                        {{authError}}
+                    </div>
+                    <div class="list-group list-group-sm">
+                        <div class="list-group-item">
+                            <input type="email" placeholder="Correo Electrónico" class="form-control no-border"
+                                   ng-model="user.email" required>
+                        </div>
+                        <div class="list-group-item">
+                            <input type="password" placeholder="Contraseña" class="form-control no-border"
+                                   ng-model="password" required>
+                        </div>
+                        <div class="list-group-item">
+                            <input type="password" placeholder="Confirmar Contraseña"
+                                   class="form-control form-control no-border " name="password_confirmation" required
+                                   ng-model="password_confirmation" ui-validate="'$value==password' "
+                                   ui-validate-watch=" 'password' ">
+                            <span ng-show='form.password_confirmation.$error.validator'>Passwords do not match!</span>
+
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-danger  btn-block" ng-click="Recovery()"
+                            ng-disabled='form.$invalid'>Recuperar Contraseña
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<br><br>
+<style>
+    .text-muted {
+        color: #98a6ad !important;
+    }
+</style>

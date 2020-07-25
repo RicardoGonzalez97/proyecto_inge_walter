@@ -1,0 +1,155 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7&appId=525982820914900";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div id="preloader">
+    <div class="pre-icon">
+        <div class="pre-item pre-item-1"></div>
+        <div class="pre-item pre-item-2"></div>
+        <div class="pre-item pre-item-3"></div>
+        <div class="pre-item pre-item-4"></div>
+    </div>
+</div>
+<header id="header" class="header">
+    <div class="container">
+        <div class="logo"><a ui-sref="app.inicio" style="margin-top: 10%">
+            <img ng-src="/sitio/images/logoo.png"
+                 class="logo-tab"></a></div>
+        <nav class="navigation">
+            <div class="open-menu">
+                <span class="item item-1"></span>
+                <span class="item item-2"></span>
+                <span class="item item-3"></span>
+            </div>          
+            <ul class="menu">               
+                <li class="menu-item-has-children">
+                    <a ui-sref="app.quienes">Nosotros</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a target="_blank" href="http://revista.gicdt.org/">Revista Digital</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a ui-sref="app.cursos.info">Cursos y Talleres</a>
+                    <ul class="class sub-menu">
+                        <li><a ui-sref="app.cursos.info">Información</a></li>
+                        <li><a href="app#/app/cursos/view">Cursos Disponibles</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a ui-sref="app.login.iniciar" ng-show="!user">Iniciar sesión</a>
+                </li>
+            </ul>
+            <ul ng-show="user" class="menu">
+            <li class="menu-item-has-children">
+                    <a style="cursor: pointer;">Perfil: {{user.name}}</a>
+                    <ul class="class sub-menu">
+                        <li><a href="app#/app/cursos/view" style="cursor: pointer;">Mi perfil</a></li>
+                        <li><a ng-click="logout()" style="cursor: pointer;">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+             
+
+            </ul>
+            <!-- END / LIST ACCOUNT INFO -->
+
+        </nav>
+        <!-- END / NAVIGATION -->
+
+    </div>
+</header>        
+<div ui-view>
+
+</div>
+<footer id="footer" class="footer">
+
+    <div class="first-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-7">
+                    <div class="widget widget_latest_new">
+                        <h3 class="md big">GICDT</h3>
+                        <p class="text-justify">GICDT es el espacio ideal para que puedas fomentar la investigación y
+                            divulgación a través de los 2 servicios:
+                            <br>•	Publicación de artículos en la Revista Digital Técnica Científica,
+                            <br>•	Cursos y Talleres,
+                        <a ui-sref="app.login.iniciar" class="widget mc-btn btn-style-1">Comencemos</a>
+                        <a href="https://twitter.com/PLATAFORMAIQ160" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-show-count="false">Follow @PLATAFORMAIQ160</a>
+                        <div class="fb-like" data-href="https://www.facebook.com/IQ160-1644289782559805/?notif_t=page_admin&amp;notif_id=1472498881336387" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true" style="background-color: orange; color: whitesmoke;"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4">
+                    <div class="widget widget_latest_new">
+                        <h3 class="sm">Últimas noticias</h3>
+                        <ul>
+                            <li>
+                                <a target="_blank" href="http://revista.gicdt.org/">
+                                    <div class="image-thumb">
+                                        <img ng-src="/sitio/images/revista.png" alt="">
+                                    </div>
+                                    <span>¡Visita nuestra Revista Digital Técnica Científica!</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                
+
+                
+                    <div class="widget widget_latest_new">
+                     <h3 class="sm">Enlaces rápidos</h3>
+                        <ul class="list-style-block">
+                            <li><a ui-sref="app.ayuda">Ayuda</a></li>
+                            <li><a ui-sref="app.quienes">¿Quiénes somos?</a></li>
+                            <li><a ui-sref="app.preguntas">Preguntas frecuentes</a></li>
+                            <li><a ui-sref="app.terminos">Términos y condiciones</a></li>
+                            <li><a ui-sref="app.contacto">Contáctanos</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="second-footer">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="col-lg-8">
+                    <div class="col-lg-4">
+                        <a href="tel:9611121331"><i class="fa fa-phone"></i>
+                        <span>(961) 11-21-331</span></a>
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="fa fa-user"></i>
+                        <span style="color: black"> Ing. Daniel Eduardo Pérez Ramirez</span>
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="icon md-email"></i>
+                        <a style="color:black" href="mailto:dangpark17@gmail.com"> dangpark17@gmail.com || waltertorres@elgrupo.mx </a>
+                    </div>
+                </div>
+               <div class="col-lg-4">
+                   <i class="icon"></i>
+                   <span class="copyright" style="color:black">Copyright © 2017 Grupo de Investigación Científica y Desarrollo Tecnológico.</span>
+               </div>
+
+                </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    $('.open-menu').on('click', function() {
+        $(this).toggleClass('toggle-active');
+        console.log("Click");
+        $('.navigation .menu, .search-box').slideToggle(300);
+    });
+</script>
+<script  src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>

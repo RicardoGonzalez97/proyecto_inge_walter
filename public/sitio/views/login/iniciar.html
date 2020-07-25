@@ -1,0 +1,59 @@
+<!-- LOGIN -->
+<section id="login-content" class="login-content">
+    <div class="awe-parallax bg-login-content"></div>
+    <div class="overlay-color-3"></div>
+    <div class="container">
+        <div class="row">
+            <!-- FORM -->
+            <div class="col-xs-12 col-lg-4 pull-right">
+                <div class="form-login">
+                    <form>
+                        <h2 class="text-uppercase">Iniciar Sesión</h2>
+                       <div class="alert alert-danger" ng-if="authError">
+                        	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        	{{authError}}
+                        </div>
+                        <div class="alert alert-danger" ng-repeat="error in errors">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                            {{error[0]}}
+                        </div>
+
+                        <div class="form-email">
+                            <input type="email" placeholder="Correo" my-enter="login()" style="color:black" ng-model="user.email">
+                        </div>
+                        <div class="form-password">
+                            <input type="password" placeholder="Contraseña" my-enter="login()" style="color:black" ng-model="user.password">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="check">
+                            <label for="check">
+                                <i class="icon md-check-2"></i>
+                                Recordarme
+                            </label>
+                            <a ui-sref="app.login.recuperar">
+                                <font class="cambioColor">¿Olvidaste tu contraseña?</font>
+                            </a>
+                        </div>
+                        <div class="link">
+                            <a ui-sref="app.login.registro" >
+                                <i class="icon md-arrow-right" ></i>
+                                <font class="cambioColor">¿No tienes una cuenta? Registrate</font>
+                            </a>
+                        </div>
+                        <div class="form-submit-1">
+                            <a  class="mc-btn btn-style-1 text-center" ng-click="login()">Entrar</a>
+                        </div>
+                    <!--    <div class="form-submit-2">
+                            <a  class="mc-btn btn-style-1 google-plus " ng-click="authenticate('google')"> <i class="icon md-google-plus"></i> Google plus</a>
+                        </div>-->
+                    </form>
+                </div>
+            </div>
+            <!-- END / FORM -->
+
+        </div>
+    </div>
+</section>
+<!-- END / LOGIN -->
+<script type="text/javascript" src="/sitio/js/scripts.js"></script>

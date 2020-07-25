@@ -1,0 +1,92 @@
+<!-- LOGIN -->
+<section id="login-content" class="login-content">
+    <div class="awe-parallax bg-login-content"></div>
+    <div class="overlay-color-3"></div>
+    <div class="container">
+        <div class="row">
+            <!-- FORM -->
+            <div class="col-lg-6 pull-right">
+                <div class="form-login">
+                    <form name="form" class="form-validation">
+                        <h2 class="text-uppercase">Regístrate</h2>
+                        <div class="alert alert-danger" ng-repeat="error in errors">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                            {{error[0]}}
+                        </div>
+                        <div class="form-firstname">
+                            <input type="text" placeholder="Nombre(s)" style="color:black" ng-model="user.name"
+                                   required>
+                        </div>
+                        <div class="form-lastname">
+                            <input type="text" placeholder="Apellido paterno" style="color:black" ng-model="user.ap_pat"
+                                   required>
+                        </div>
+                        <div class="form-lastname">
+                            <input type="text" placeholder="Apellido materno" style="color:black"
+                                   ng-model="user.ap_mat" required="">
+                        </div>
+                        <div class="form-text">
+                            <label href="">Fecha de nacimiento: (año-mes-dia)</label>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <div class="input-group w-md">
+                                <input type="text" id="fec_nac" placeholder="Fecha de nacimiento" style="color:black" class="form-control" datepicker-popup="{{format}}"
+                                       ng-model="birthdate"
+                                       is-open="opened" datepicker-options="dateOptions" ng-required="true"
+                                       close-text="Close"/>
+                                  <span class="input-group-btn">
+                                    <button type="button"  class="btn btn-default" ng-click="open($event)">
+                                        <i
+                                                class="fa  fa-calendar">
+
+                                    </i>
+                                    </button>
+                                  </span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-email">
+                            <input type="email" placeholder="Correo electrónico" style="color:black"
+                                   ng-model="user.email" required>
+                        </div>
+                        <div class="form-password">
+                            <input type="password" placeholder="Contraseña" style="color:black" ng-model="user.password"
+                                   required>
+                        </div>
+                        <div class="form-password">
+                            <input type="password" placeholder="Confirmar contraseña" style="color:black"
+                                   ng-model="user.password_confirm" required>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="check" required>
+                            <label for="check">
+                                <i class="icon md-check-2"></i>
+                                He leído y acepto los
+                                </center></label>
+                            <a target="_blank" ui-sref="app.terminos"><font class="cambioColor">Terminos y Condiciones</font></a>
+                        </div>
+                        <div class="form-submit-1">
+                            <button value="Registrarse" class="mc-btn btn-style-1" ng-click="register()"
+                                    ng-disabled="form.$invalid">Registrarse
+                            </button>
+                        </div>
+                        <div class="link">
+                            <a ui-sref="app.login.iniciar">
+                                <i class="icon md-arrow-left"></i>
+                                <font class="cambioColor">¿Ya tienes una cuenta? Inicia Sesión</font>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END / FORM -->
+            <!--<div class="img">
+                <img ng-src="/sitio/images/homeslider/img-thumb.png" alt="">
+            </div>-->
+        </div>
+    </div>
+</section>
+<!-- END / LOGIN -->

@@ -1,0 +1,46 @@
+<section class="sub-banner sub-banner-course">
+    <div class="awe-static bg-sub-banner-course"></div>
+    <div class="container">
+        <div class="sub-banner-content">
+            <h2 class="text-center text-dark">COMITE</h2>
+        </div>
+    </div>
+</section>
+<section class="blog">
+    <div class="container">
+        <div class="blog-list-content">
+            <!-- POST -->
+            <div class="post" ng-repeat="eval in evaluators">
+                <!-- POST MEDIA -->
+                <div class="post-media">
+                    <div class="image-thumb">
+                        <img ng-src="/files/{{eval.image}}" alt="" style="    max-height: 132px;">
+                    </div>
+                </div>
+                <!-- END / POST MEDIA -->
+
+                <!-- POST BODY -->
+                <div class="post-body">
+                    <div class="post-title">
+                        <h3 class="md">{{eval.nombre}}</h3>
+                    </div>
+                    <div class="post-meta">
+                        {{eval.abstract}}
+                    </div>
+
+                    <div class="post-link">
+                        <a >
+                            <i class="fa fa-play-circle-o"></i>
+                            Leer más
+                        </a>
+                    </div>
+
+                </div>
+                <!-- END / POST BODY -->
+            </div>
+            <!-- END / POST -->
+
+        </div>
+
+    </div>
+</section>

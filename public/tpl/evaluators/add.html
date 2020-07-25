@@ -1,0 +1,54 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <div class="pageheader">
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <!-- adrian -->
+    <div class="pagecontent">
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <h1 class="custom-font right">Agregar
+                    <strong> Evaluaciones</strong></h1>
+
+            </div>
+                    <form name="form" class="form-validation">
+                        <div class="form-group">
+                            <div class="alert alert-danger" ng-repeat="error in errors">
+                                <button type="button" class="close" data-dismiss="alert"
+                                        aria-hidden="true">&times;</button>
+                                {{error[0]}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="">Artículo</label>
+                                <select ng-model="evaluar.article_id" class="form-control" required>
+                                    <option value="{{item.id}}" ng-repeat="item in Article">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="">Calificación</label>
+                                <input type="number" class="form-control" ng-model="evaluar.calification">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="">Observaciones</label>
+                                <input type="text" class="form-control" ng-model="evaluar.observations" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="button" ng-click="saveEvaluators()" class="btn m-b-xs btn-info"  ng-disabled="form.$invalid">
+                                <i class="fa fa-save"></i>  Guardar
+                            </button>
+                        </div>
+                    </form>
+        </section>
+
+    </div>
+</div>

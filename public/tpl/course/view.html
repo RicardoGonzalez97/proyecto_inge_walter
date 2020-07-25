@@ -1,0 +1,82 @@
+<div class="wrapper-md" xmlns="http://www.w3.org/1999/html">
+    <div class="col-sm-12">
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+              <center>    
+              
+                <h1 class="text-muted" style="color:black">¡Bienvenidos a tu perfil en GICDT!</h1>
+                <h2 class="m-n font-thin h3 text-black" style="color:black">Tenemos para ti los mejores cursos</h2>
+                
+              </center>
+            </div>
+        </div>
+    </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <div class="col-lg-4">
+        <div class="form-group right">
+            <label for="">Buscar curso</label>
+            <input type="text" class="form-control" placeholder="Buscar Curso" ng-model="params.search" >
+            <button class="btn btn-default" ng-click="reloadCourse()"> Buscar</button>
+        </div>
+    </div>
+    <p class="text-right">
+        Mostrando {{courses.length}} de {{total}} cursos.
+    </p>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <div class="row" infinite-scroll='nextPage()' infinite-scroll-disabled='params.flag' infinite-scroll-distance='1'>
+
+        <div class="col-lg-6" ng-repeat="course in courses | filter:search | orderBy:created_at">
+            <div class="panel b-a">
+                <div class="panel-heading no-border bg-primary">
+                    <center><span class="text-lt" ui-sref="app.cursos.inscripcion({id:course.id})">{{course.name}}</span></center>
+                </div>
+
+                <div class=" wrapper">
+                    <!--<a ui-sref="app.cursos.inscripcion({id:course.id})"><div class="text-u-c h3 m-b-sm text-primary-lter">{{course.name}}</div></a>-->
+                    <i class="text-center h2">{{course.start_date}}</i> <br><br>
+                    <div class="name-author h4">
+                        <a>{{course.author.name +" "+course.author.ap_pat +" "+course.author.ap_mat}}</a>
+                    </div>
+                    <!-- <div ng-init="xx = 5" class="m-b text-lg" width="200px" height="150px">
+                        <rating ng-model="xx" max="5" state-on="'fa fa-star text-warning'"
+                                state-off="'fa fa-star-o'"></rating>
+                        <b>({{xx}})</b>
+                    </div> -->
+                </div>
+                <!--<img ng-src="/files/{{course.image|| 'noimage.png'}}" width="280px" height="220px" class="img-full">-->
+
+                <a ui-sref="app.cursos.inscripcion({id:course.id})">
+                    <img src="/files/{{course.image|| 'noimage.png'}}" width="70px" height="180px" class="img-full">
+                </a>
+
+            </div>
+            <div class="hbox text-center b-b b-light text-sm">
+                <a href="/files/{{course.files}}" class="col padder-v text-muted b-r b-light">
+                    <i class="icon-pencil block m-b-xs fa-2x"></i>
+                    <span>Descargar Temario</span>
+                </a>
+                <a href class="col padder-v text-muted b-r b-light" ui-sref="app.cursos.inscripcion({id:course.id})">
+                    <i class="fa fa-eye block m-b-xs fa-2x"></i>
+                    <span>Ver</span>
+                </a>
+                <!--<a href class="col padder-v text-muted">
+                    <i class="icon-cursor block m-b-xs fa-2x"></i>
+                    <span>Direction</span>
+                </a>-->
+            </div>
+        </div>
+
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+    </div>
+    <div class="wrapper-md  " ng-show="params.current">
+        <img src="/load.gif" class="load-gif">
+    </div>
+    <div class="wrapper-md" ng-show="params.flag">
+
+        <div class="line line-dashed b-b line-lg pull-in">
+
+        </div>
+      </div>
+
+</div>

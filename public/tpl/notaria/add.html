@@ -1,0 +1,60 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <h1 class="custom-font right">Agregar
+                    <strong> Notaria</strong></h1>
+
+            </div>
+            <form name="form" class="form-validation">
+                <div class="form-group">
+                    <div class="alert alert-danger" ng-repeat="error in errors">
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-hidden="true">&times;</button>
+                        {{error[0]}}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Texto Firmado</label>
+                        <input type="text" class="form-control" ng-model="notari.texto_firmado">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Encriptado</label>
+                        <input type="text" class="form-control" ng-model="notari.encriptado">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Hash</label>
+                        <input type="text" class="form-control" ng-model="notari.hash">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Estudiante</label>
+                        <select ng-model="notari.students_id" class="form-control" required>
+                            <option selected="" disabled="" value="" >(Seleccionar)</option>
+                            <optgroup  label="Estudiantes">
+                                <option value="{{item.id}}" ng-repeat="item in Students">{{item.course_id}}</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <button type="button" ng-click="saveNotaria()" class="btn m-b-xs btn-info"  ng-disabled="form.$invalid">
+                        <i class="fa fa-save"></i>  Guardar
+                    </button>
+                </div>
+            </form>
+
+
+        </section>
+
+    </div>
+</div>

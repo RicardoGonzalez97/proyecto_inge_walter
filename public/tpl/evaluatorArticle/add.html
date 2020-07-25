@@ -1,0 +1,70 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <div class="pageheader">
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <!-- adrian -->
+    <div class="pagecontent">
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <h1 class="custom-font right">Agregar
+                    <strong> Evaluadores</strong></h1>
+
+            </div>
+            <form name="form" class="form-validation">
+                <div class="form-group">
+                    <div class="alert alert-danger" ng-repeat="error in errors">
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-hidden="true">&times;</button>
+                        {{error[0]}}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Nombre del Evaluador</label>
+                        <input type="text" class="form-control" ng-model="evaluador.name" required>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="">Resumen documental</label>
+                        <textarea ng-model="evaluador.abstract"
+                                  redactor="{plugins: ['table', 'video', 'alignment', 'iconic2']}" cols="30"
+                                  rows="10" required></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">C V</label>
+                        <input type="text" class="form-control" ng-model="evaluador.cv" required>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Correo electrónico</label>
+                        <input type="text" class="form-control" ng-model="evaluador.email" required>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Número de telefono</label>
+                        <input type="number" class="form-control" ng-model="evaluador.phone">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Página web</label>
+                        <input type="text" class="form-control" ng-model="evaluador.web" required>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <button type="button" ng-click="saveEvaluatorArticle()" class="btn m-b-xs btn-info"  ng-disabled="form.$invalid">
+                        <i class="fa fa-save"></i>  Guardar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </div>
+</div>

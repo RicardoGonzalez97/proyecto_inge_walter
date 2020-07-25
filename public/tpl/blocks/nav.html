@@ -1,0 +1,100 @@
+<!-- list -->
+<ul class="nav">
+  <li ng-if="isAdmin()" class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span >Administrador</span>
+  </li>
+  <li ng-if="isInstructor()" class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span >Instructor</span>
+  </li> <li ng-if="isUser()" class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+  <span>Usuario</span>
+</li><li ng-if="isPresidente()" class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+  <span>Presidente</span>
+</li>
+  <li>
+    <a target="_blank" href="http://revista.gicdt.org/" class="auto">
+      <!-- <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span> -->
+      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+      <span class="font-bold" >Revista</span>
+    </a>
+  </li>
+
+  <li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+      <span class="font-bold" >Cursos</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li ui-sref-active="active" >
+        <a ui-sref="app.cursos.index" ng-if="isAdmin() || isInstructor() || isPresidente()">
+          <span >Ver Mis Cursos</span>
+        </a>
+        <a ui-sref="app.cursos.view">
+          <span >Cursos Disponibles</span>
+        </a>
+        <a ui-sref="app.cursos.createcurso" ng-if="isUser()">
+          <span >¿Crear un curso?</span>
+        </a>
+        <a ui-sref="app.cursos.indexadd" ng-if="isInstructor() || isPresidente()">
+          <span >Crear Cursos</span>
+        </a>
+        <a ui-sref="app.cursos.categoriacurso" ng-if="isAdmin() || isPresidente()">
+          <span >Categoría de curso</span>
+        </a>
+        <a ui-sref="app.cursos.tipocurso" ng-if="isAdmin() || isPresidente()">
+          <span >Tipo de curso</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!--<li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+      <span class="font-bold" >Usuarios</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li ui-sref-active="active" >
+        <a ui-sref="app.login.mostrar" >
+          <span >Administrar</span>
+        </a>
+      </li>
+    </ul>
+  </li>-->
+  <!--<li ui-sref-active="active" ng-if="isAdmin()">
+    <a ui-sref="app.usuarios.index" class="auto">
+      <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+      <span class="font-bold" >Usuarios</span>
+    </a>
+  </li>-->
+  
+
+  <!--<li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-th-large icon text-success"></i>
+      <span class="font-bold">Bolsa de Trabajo</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>Apps</span>
+        </a>
+      </li>
+    </ul>
+  </li> -->
+
+</ul>
+<!-- / list -->

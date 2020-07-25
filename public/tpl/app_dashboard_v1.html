@@ -1,0 +1,88 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col-sm-12">
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+              <center>    
+                <h1 class="m-n font-thin h3 text-black">Hola, Amigo(a)</h1>
+                <small class="text-muted">Te damos una cordial bienvenida a la plataforma iq160!</small>
+              </center>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+    
+    <center><h3>Tenemos los siguientes cursos disponibles</h3></center>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <div class="col-lg-4">
+        <div class="form-group right">
+            <label for="">Buscar curso</label>
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="params.search" >
+            <button class="btn-default" ng-click="reloadCourse()"> Buscar</button>
+        </div>
+    </div>
+    <p class="text-right">
+        Mostrando {{courses.length}} de {{total}} cursos.
+    </p>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <div class="row" infinite-scroll='nextPage()' infinite-scroll-disabled='params.flag' infinite-scroll-distance='1'>
+
+        <div class="col-lg-3" ng-repeat="course in courses |filter:search ">
+            <div class="panel b-a">
+                <div class="panel-heading no-border bg-primary">
+                    <span class="text-lt">{{course.name}}</span>
+                </div>
+
+                <div class=" wrapper">
+                    <div class="text-u-c h3 m-b-sm text-primary-lter">{{course.name}}</div>
+                    <div ng-init="xx = 4" class="m-b text-lg" width="200px" height="150px">
+                        <rating ng-model="xx" max="5" state-on="'fa fa-star text-warning'"
+                                state-off="'fa fa-star-o'"></rating>
+                        <b>({{xx}})</b>
+                    </div>
+                </div>
+                <img ng-src="/files/{{course.image}}" width="70px" height="180px" class="img-full">
+
+            </div>
+            <div class="hbox text-center b-b b-light text-sm">
+                <a href class="col padder-v text-muted b-r b-light">
+                    <i class="icon-pencil block m-b-xs fa-2x"></i>
+                    <span>Descargar Temario</span>
+                </a>
+                <a href class="col padder-v text-muted b-r b-light" ui-sref="app.cursos.inscripcion({id:course.id})">
+                    <i class="fa fa-eye block m-b-xs fa-2x"></i>
+                    <span>Ver</span>
+                </a>
+                <a href class="col padder-v text-muted">
+                    <i class="icon-cursor block m-b-xs fa-2x"></i>
+                    <span>Direction</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+    </div>
+    <div class="wrapper-md  " ng-show="params.current">
+        <img src="/load.gif" class="load-gif">
+    </div>
+    <div class="wrapper-md" ng-show="params.flag">
+
+        <div class="line line-dashed b-b line-lg pull-in">
+
+        </div>
+        <h4>ya no hay mas datos</h4>
+    </div>
+
+ </div>
+        <!-- END / FEATURE -->
+
+        
+    </div>
+        <!-- / main header -->        
+</div>
+    <!-- / right col -->
+</div>

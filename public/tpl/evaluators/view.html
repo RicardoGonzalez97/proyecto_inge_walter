@@ -1,0 +1,35 @@
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-lg-3" ng-repeat="evaluators in evaluatorss ">
+            <div class="panel b-a">
+                <div class="panel-heading no-border bg-primary">
+                    <span class="text-lt">{{evaluators.name}}</span>
+                </div>
+
+                <div class=" wrapper">
+                    <div class="text-u-c h3 m-b-sm text-primary-lter">{{evaluators.name}}</div>
+                    <div ng-init="xx = 4" class="m-b text-lg">
+                        <rating ng-model="xx" max="5" state-on="'fa fa-star text-warning'" state-off="'fa fa-star-o'"></rating> <b>({{xx}})</b>
+                    </div>
+                </div>
+                <img ng-src="/files/{{evaluators.files}}" class="img-full">
+            </div>
+            <div class="hbox text-center b-b b-light text-sm">
+                <a href="" class="col padder-v text-muted b-r b-light">
+                    <i class="icon-call-end block m-b-xs fa-2x"></i>
+                    <span>Call</span>
+                </a>
+                <a href="" class="col padder-v text-muted b-r b-light">
+                    <i class="icon-pointer block m-b-xs fa-2x"></i>
+                    <span>Location</span>
+                </a>
+                <a href="" class="col padder-v text-muted">
+                    <i class="icon-cursor block m-b-xs fa-2x"></i>
+                    <span>Direction</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

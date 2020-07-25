@@ -1,0 +1,21 @@
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-lg-3" ng-repeat="article in articles ">
+            <div class="panel b-a">
+                <div class="panel-heading no-border bg-primary">
+                    <span class="text-lt">{{article.name}}</span>
+                </div>
+
+                <div class=" wrapper">
+                    <div class="text-u-c h3 m-b-sm text-primary-lter">{{article.name}}</div>
+                    <div ng-init="xx = 4" class="m-b text-lg">
+                        <rating ng-model="xx" max="5" state-on="'fa fa-star text-warning'" state-off="'fa fa-star-o'"></rating> <b>({{xx}})</b>
+                    </div>
+                </div>
+                <!-- <img ng-src="/files/{{article.files}}" class="img-full">-->
+            </div>
+
+        </div>
+
+    </div>
+</div>

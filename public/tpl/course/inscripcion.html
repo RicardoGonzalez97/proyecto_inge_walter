@@ -1,0 +1,331 @@
+<div class="bg-light lter b-b wrapper-md">
+    <center><h1 style="color:black; cursor: pointer;">{{course.name}}</h1></center>
+</div>
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="blog-post">
+                <div class="panel">
+                    <div>
+                        <img src="/files/{{course.image|| 'noimage.png'}}" class="img-full">
+                    </div>
+                    <div class="wrapper-lg">
+                        <div class="row">
+                            <div class="tags m-b-lg l-h-2x">
+                                <a class="label bg-primary" ng-repeat="tags in getSplit(course.keywords)">{{tags}}</a>
+                            </div>
+                        </div>
+                        <h2 class="m-t-none"><a>Descripción del curso</a></h2>
+                        <div class="text-justify" ng-bind-html="course.description"></div>
+                        <div class="line line-lg b-b b-light"></div>
+                        <div class="text-muted">
+                            <i class="fa fa-user text-muted"></i> by <a class="m-r-sm">{{course.author.nickname}}</a>
+                            <i class="fa fa-clock-o text-muted"></i> <a>{{course.start_date}}</a>
+                            <a class="m-l-sm"><i class="fa fa-comment-o text-muted"></i>Comentarios</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <h4 class="m-t-lg m-b">Dejanos tu comentario</h4>
+                <form name="comentariosForm">
+
+                    <rating ng-model="comentario.rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)"
+                            on-leave="overStar = null" class="fa-2x text-warning"></rating>
+                    <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Escribe tu comentario."
+                              ng-model="comentario.comment" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" ng-click="sendComment()"
+                                ng-disabled="!comentariosForm.$valid">Enviar Comentario
+                        </button>
+                    </div>
+                </form>
+                <div class="padder">
+                    <div class="streamline b-l b-info m-l-lg m-b padder-v"
+                         ng-repeat="comment in comments | orderBy:created_at">
+                        <div>
+                            <a class="pull-left thumb-sm avatar m-l-n-md">
+                                <img src="img/a9.jpg" class="img-circle" alt="...">
+                            </a>
+                            <div class="m-l-lg">
+                                <div class="m-b-xs">
+                                    <a class="h4">{{comment.usuario.name+' '+comment.usuario.ap_pat+'
+                                        '+comment.usuario.ap_mat}}</a>
+                                <span class="text-muted m-l-sm pull-right">
+                                    {{comment.created_at|fromNow}}
+                                </span>
+                                </div>
+                                <div class="m-b">
+                                    <div><p class="text-justify">{{comment.comment }}</p></div>
+                                    <div class="m-t-sm">
+                                        <rating ng-model="comment.rate" max="5" readonly="true"
+                                                class="fa text-warning"></rating>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-5">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="" class="thumb-lg pull-left m-r">
+                            <img src="{{course.author.photo|| '/usuario/default.png'}}" class="img-circle">
+                        </a>
+                        <div class="clear m-b">
+                            <div class="m-b m-t-sm">
+                                    <span class="h3 text-black" style="color: #0000cc">{{course.author.name}} {{course.author.ap_pat}}
+                                    {{course.author.ap_mat}}</span>
+                                <br>
+                                <small class="m-l" style="color: #00a8f3">Instructor</small>
+                            </div>
+                            <p class="m-b">
+                                <a href="" class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i
+                                        class="fa fa-twitter"></i></a>
+                                <a href="" class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i
+                                        class="fa fa-facebook"></i></a>
+                                <a href="" class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i
+                                        class="fa fa-google-plus"></i></a>
+                            </p>
+                        </div>
+
+
+                        <!--<div class="clearfix text-center m-t">-->
+                        <!--<div class="inline">-->
+                        <!--<div ui-jq="easyPieChart" ui-options="{-->
+                        <!--percent: 75,-->
+                        <!--lineWidth: 5,-->
+                        <!--trackColor: '{{app.color.light}}',-->
+                        <!--barColor: '{{app.color.info}}',-->
+                        <!--scaleColor: false,-->
+                        <!--color: '{{app.color.dark}}',-->
+                        <!--size: 134,-->
+                        <!--lineCap: 'butt',-->
+                        <!--rotate: -90,-->
+                        <!--animate: 1000-->
+                        <!--}">-->
+                        <!--<div class="thumb-xl">-->
+                        <!--<img href="#" ng-src="{{course.author.photo|| '/usuario/default.png'}}"-->
+                        <!--class="thumb-xl" alt="...">-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="h4 m-t m-b-xs">-->
+                        <!--</div>-->
+                        <!--<small class="text-muted m-b"></small>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                    </div>
+
+
+                </div>
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h5 class="text-center text-muted">Fechas del curso</h5>
+                        <h3 style="color:blue">Inicio: {{course.start_date}} horas</h3>
+                        <h3 style="color:blue">Fin: {{course.end_date}} horas</h3>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h5 class="text-center text-muted">Link Hangouts</h5>
+                        <h3 style="color:blue"><a href="{{course.hangouts}}" target="_blank">Link del Curso</a></h3>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h5 class="text-center text-muted">Precio del curso</h5>
+
+                        <h1 style="color:red">${{course.price}}</h1>
+                        <!--<label class="text-justify">Obtén de tu constancia por tan sólo ${{course.price}}</label>-->
+
+                            <div class="panel" target="_blank" ng-if="constancia">
+                                <div class="panel-body text-center">
+                                    <h5 class="text-center text-muted">Instrucciones de orden de Pago</h5>
+                                    <div class="" ng-if="course.price>60">
+                                        <form target="_blank" action="https://compropago.com/comprobante" method="post">
+                                            <input type="hidden" name="public_key" value="pk_live_732abef17433476a74">
+                                            <input type="hidden" name="product_price" value="{{course.price}}">
+                                            <input type="hidden" name="product_name" value="{{course.name}}">
+                                            <input type="hidden" name="product_id" value="{{course.id}}">
+                                            <input type="hidden" name="customer_name" value="{{user.name+' '+user.ap_pat+' '+user.ap_mat}}">
+                                            <input type="hidden" name="customer_email" value="{{user.email}}">
+                                            <input type="hidden" name="customer_phone" value="{{user.cellphone}}">
+                                            <input type="hidden" name="image_url"
+                                                   value="{{imageCourse}}">
+                                            <input type="hidden" name="success_url" value="">
+                                            <input type="hidden" name="failed_url" value="">
+                                            <input type="image" src="https://compropago.com/assets/payment-green-btn.png" border="0"
+                                                   name="submit" alt="Pagar con ComproPago">
+                                        </form>
+                                    </div>
+                                    <div target="_blank" ng-if="course.price<60" class="text-center">
+                                        <div ng-bind-html="paid">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="panel" ng-if="isAdmin()">
+                    <div class="panel-body text-center">
+                        <h5 class="text-center text-muted">Constancias Generadas</h5>
+                        <h1 class="btn  btn-lg btn-success btn-rounded" ng-if="isAdmin()"
+                            ui-sref="app.cursos.constancias({id:course.id})">Constancias Alumnos</h1>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <a ng-click="saveStudents(course.id)" class="btn  btn-lg btn-info btn-rounded"
+                           ng-disabled="inscrito==1 || flagDate ==1"> Inscribirme al curso</a>
+                        <div ng-if="flagDate==1">Rebasó fecha</div>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-success" ng-if="constancia">
+                    <h2 class="text-center" style="color:green">Ya Estás Inscrito Al Curso "{{course.name}}"</h2>
+
+                    <div class="panel-body text-center">
+                        <a target="_blank" ui-sref="app.cursos.constancia"
+                           href="/v1/curse/admin/Course/getConstancia/{{constancia.course_id}}"
+                           class="btn  btn-lg btn-success btn-rounded" ng-click="recoveryConstancia()"
+                           ng-disabled="((constancia.status!='1') || (constancia.certificate!='1'))">
+                            Generar Constancia
+                        </a>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <a ui-sref="app.cursos.lista({id:course.id})" ng-if="isInstructor() || isAdmin()"
+                           class="btn  btn-lg btn-success btn-rounded">Pase de Lista</a>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <a ui-sref="app.cursos.lista({id:course.id})" ng-if="isPresidente()"
+                           class="btn  btn-lg btn-success btn-rounded">Pase de Lista Presidente</a>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <h5>Dirección:</h5>
+                        <ng-map center="{{center}}" zoom="15">
+                            <marker
+                                    position="{{center}}" ,
+                                    icon="{url:'/img/map.png'}"
+                            ></marker>
+                        </ng-map>
+                        <a target="_blank" class="text-muted"
+                           href="https://www.google.com.mx/maps/place/{{course.direction}}">{{course.direction}}</a>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <a>
+                            <h5 class="text-center text-muted">Límite de alumnos</h5>
+                        </a>
+                        <a>
+                            <h3 style="color:green">
+                                {{courseUsuarios}} inscritos de {{course.quota_max}} disponibles
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-body" ng-if="isInstructor() || isAdmin()">
+                        <a ui-sref="app.cursos.inscritos({id:course.id})">
+                            <h5 class="text-center text-muted">Alumnos inscritos</h5>
+                        </a>
+                        <div ng-repeat="user in courseUsers">
+                            <a class="pull-left thumb thumb-wrapper m-r">
+                                <img ng-src="{{user.usuario.photo||'img/b0.jpg'}}">
+                            </a>
+                            <div class="clear">
+                                <a ui-sref="app.cursos.inscritos({id:course.id})" class="font-semibold text-ellipsis">{{user.usuario.name+'
+                                    '+user.usuario.ap_pat+' '+user.usuario.ap_mat}}</a>
+                                <div class="text-xs block m-t-xs"><a href="">Registrado </a>
+                                    {{user.usuario.created_at|fromNow}}
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+
+                        <a ui-sref="app.cursos.inscritos({id:course.id})" class="btn btn-success btn-rounded font-bold">
+                            +{{courseUsuarios-courseUsers.length}} </a>
+                    </div>
+
+                    <div class="panel-body" ng-if="isUser()">
+                        <h5 class="text-center text-muted">Alumnos inscritos</h5>
+                        <div ng-repeat="user in courseUsers">
+                            <a class="pull-left thumb thumb-wrapper m-r">
+                                <img ng-src="{{user.usuario.photo||'img/b0.jpg'}}">
+                            </a>
+                            <div class="clear">
+                                <a class="font-semibold text-ellipsis">{{user.usuario.name+'
+                                    '+user.usuario.ap_pat+' '+user.usuario.ap_mat}}</a>
+                                <div class="text-xs block m-t-xs">Registrado
+                                    {{user.usuario.created_at|fromNow}}
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+
+                        <a class="btn btn-success btn-rounded font-bold">
+                            +{{courseUsuarios-courseUsers.length}} </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-success">
+                <div class="panel-body">
+                    <h5 class="text-muted text-center">Temario y archivos del curso</h5>
+                    <div class="list-group">
+
+                        <div class="row" infinite-scroll='nextPage()' infinite-scroll-disabled='params.flag'
+                             infinite-scroll-distance='1'>
+                            <a target="_blank" class="list-group-item" ng-repeat="files in getSplit(course.files)"
+                               href="/files/{{files}}">
+                                <i class="icon-paper-clip  text-muted"></i> Archivo
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+                <!-- <div class="panel panel-success">
+                    <div class="panel-body">
+                        <h5 class="text-center text-muted">Alumnos inscritos</h5>
+                        <div ng-repeat="user in courseUsers">
+                            <a class="pull-left thumb thumb-wrapper m-r">
+                                <img ng-src="{{user.usuario.photo||'img/b0.jpg'}}">
+                            </a>
+                            <div class="clear">
+                                <a href="" class="font-semibold text-ellipsis">{{user.usuario.name+'
+                                    '+user.usuario.ap_pat+' '+user.usuario.ap_mat}}</a>
+                                <div class="text-xs block m-t-xs"><a href="">Registrado </a>
+                                    {{user.usuario.created_at|fromNow}}
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+
+        </div>
+
+    </div>

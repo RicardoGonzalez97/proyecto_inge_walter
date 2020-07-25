@@ -1,0 +1,48 @@
+<div class="page page-tables-bootstrap">
+<div class="container">
+    <section class="tile">
+        <center><div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font">
+                <strong>Lista de alumnos inscritos en el curso</strong></h1>
+        </div></center>
+        <center><h2 style="cursor: pointer;">{{course.name}}</h2>
+            <a class="btn btn-success btn-rounded font-bold">
+                {{courseUsuarios}} Alumnos Inscritos
+            </a>
+        </center>
+      <br>
+  <div class="panel panel-default">
+    <div class="row wrapper">
+      <div class="col-sm-3">
+        <div class="input-group">
+          <input type="text" class="input-sm form-control" placeholder="Buscar Alumnos" ng-model="params.search">
+          <span class="input-group-btn">
+            <button class="btn btn-sm btn-default" type="button" ng-click="reloadStudents()">Buscar!</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive" class="row" infinite-scroll='nextPage()' infinite-scroll-disabled='params.flag' infinite-scroll-distance='1'>
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Fecha de inscripción</th>
+            <th style="width:30px;"></th>
+          </tr>
+        </thead>
+          <tbody>
+          <tr ng-repeat="user in courseUsers | orderBy:ap_pat | filter:search">
+            <td class="text">{{$index + 1}}</td>
+            <td class="text">{{user.usuario.ap_pat+' '+user.usuario.ap_mat+' '+user.usuario.name}}</td>
+            <td class="text">{{user.usuario.created_at|fromNow}}</td>
+          </tr>
+         </tbody>
+      
+      </table>
+    </div>  
+  </div>
+    </section>
+</div>
+</div>

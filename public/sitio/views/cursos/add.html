@@ -1,0 +1,137 @@
+<section class="sub-banner sub-banner-course">
+    <div class="awe-static bg-sub-banner-course"></div>
+    <div class="container">
+        <div class="sub-banner-content">
+            <h2 class="text-center text-dark">Ofertar Cursos</h2>
+        </div>
+    </div>
+</section>
+<section class="blog">
+    <div class="container">
+            <!-- POST -->
+            <div class="pagecontent">
+                <section class="tile">
+                    <div class="tile-header dvd dvd-btm">
+                        <h1 class="custom-font right">Agregar
+                            <strong>Cursos</strong></h1>
+
+                    </div>
+                    <form name="form" class="form-validation">
+                        <div class="form-group">
+                            <div class="alert alert-danger" ng-repeat="error in errors">
+                                <button type="button" class="close" data-dismiss="alert"
+                                        aria-hidden="true">&times;</button>
+                                {{error[0]}}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="">Nombre del Curso</label>
+                                <input type="text" class="form-control ng-invalid ng-touched ng-dirty ng-valid-parse ng-valid-required ng-invalid-pattern" ng-model="curso.name"  required aria-required="false" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="">Titulo del certificado</label>
+                                <input type="text" class="form-control" ng-model="curso.certificate_title" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="">Palabras claves</label>
+                                <input class="form-control" ng-model="curso.keywords" required>
+                            </div>
+                        </div>
+                        <!--INICIO-->
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="">Descripción</label>
+                                <textarea ng-model="curso.description" class="ta-scroll-window ng-scope ta-editor form-control" ng-hide="showHtml" aria-hidden="false" required>
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <!--FIN-->
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="">Precio de curso</label>
+                                <input type="number" class="form-control" ng-model="curso.price" required>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="">Cupo minimo</label>
+                                <input type="number"
+                                       class="form-control  " ui-validate=" '$value >= 5' "
+                                       ng-model="curso.quota_min"  placeholder="mayor a 5" >
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="">Cupo maximo</label>
+                                <input type="number"
+                                       class="form-control " ui-validate=" '$value >= 12' "
+                                       placeholder="mayor a 12" ng-model="curso.quota_max" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="">Hangouts</label>
+                                <input type="url" name="url" placeholder="http://" class="form-control"  ng-model="curso.hangouts" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group" >
+                                <label for="">Tipo de Curso</label>
+                                <select ng-model="curso.typeCourse_id" class="form-control" required>
+                                    <option value="{{item.id}}" ng-repeat="item in TypeCourse">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group>
+                                <label for="">Categoria del Curso</label>
+                                <select ng-model="curso.categoryCourse_id" class="form-control" required>
+                                    <option value="{{item.id}}" ng-repeat="item in CategoryCourse">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="">Fecha de inicio</label>
+                                <input class="form-control" ng-model="curso.start_date" type="date" required>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <ng-map center="{{center}}" zoom="11">
+                                <marker
+                                        position="{{center}}" ,
+                                        draggable="true"
+                                        icon="{url:'/img/map.png'}"
+                                        animation="BOUNCE"
+                                        on-mouseup='setNewPosition()'
+                                ></marker>
+                            </ng-map>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="">Direccón</label>
+                                <textarea ng-model="curso.direction" class="form-control" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <button type="button" ng-click="saveCourse()" class="btn m-b-xs btn-info"  ng-disabled="form.$invalid">
+                                <i class="fa fa-save"></i>  Guardar
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <!-- END / POST -->
+    </div>
+</section>

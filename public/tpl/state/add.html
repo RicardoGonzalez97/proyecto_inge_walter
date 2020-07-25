@@ -1,0 +1,51 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <div class="pageheader">
+
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.revista">{{page.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.revista.estado">{{page.subtitle}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.revista.estado">Agregar Estado</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="">
+                    <div class="alert alert-danger" ng-repeat="error in errors">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{error[0]}}
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label for="">Nombre del Estado</label>
+                        <input type="text" class="form-control" ng-model="estado.name">
+                    </div>
+                </div>
+                <button type="button" ng-click="saveState()" class="btn btn-default">Guardar</button>
+            </div>
+
+
+        </div>
+        estado:{{estado|json}}
+    </div>
+</div>
+</div>

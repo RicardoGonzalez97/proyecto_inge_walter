@@ -1,0 +1,46 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <div class="pageheader">
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="app.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.revista">{{page.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="app.revista.ciudad">{{page.subtitle}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+        <a class="btn btn-success"  ui-sref="app.revista.ciudadadd">Agregar Ciudad</a>
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in ciudades">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

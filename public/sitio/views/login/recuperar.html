@@ -1,0 +1,76 @@
+<div class="login-content">
+
+    <div class="container bg-white">
+        <div class="row">
+
+            <div class="col-lg-2"></div>
+
+            <div class="col-lg-4">
+                <a class="navbar-brand block m-t text-center">Perdistes tu Contraseña?</a>
+
+                <form name="reset">
+
+
+                    <div class="list-group list-group-sm">
+                        <div class="list-group-item">
+                            <span class='text-muted'>Por favor, introduzca su email a continuación.</span>
+                            <input type="email" name='username' placeholder="Email" ng-model="user.email"
+                                   class="form-control " required>
+                        </div>
+                    </div>
+                    <button type="submit" ng-disabled="reset.$invalid || sending"
+                            class="btn btn-lg btn-primary btn-block" ng-click="resetPassword()">Enviar
+                    </button>
+                    <br>
+                    <div ng-if="isCollapsed" class="m-t">
+                        <p class="text danger text-white">Se te envió un enlace para restablecer tu contraseña, revisa
+                            tu bandeja
+                            de entrada.</p>
+          <span class="clear">
+
+            <small class="clear text-ellipsis text-danger">{{authError}}</small>
+            <small class=' clear text-ellipsis text-info'>En breve te llevaremos a la página de acceso!!!</small>
+
+          </span>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4 text-center">
+                <a class="navbar-brand block m-t">No tienes Cuenta?</a>
+
+
+                <a class="btn btn-danger btn-lg  btn-block" ui-sref="app.login.registro"><i class="fa  fa-sign-in"></i>
+                    REGISTRARSE</a>
+                <a class="navbar-brand block m-t">Ya tienes Cuenta?</a>
+
+                <a ui-sref="app.login.iniciar" class="btn btn-info btn-lg  btn-block">INICIAR SESSIÓN</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<br><br>
+
+<style>
+    .navbar-brand {
+        display: inline-block;
+        float: none !important;
+        height: auto;
+        padding: 0 20px;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 50px;
+    }
+
+    .m-t {
+        margin-top: 15px;
+    }
+
+    .block, [ui-view].ng-leave.smooth {
+        display: block;
+    }
+
+</style>

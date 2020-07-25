@@ -1,0 +1,212 @@
+<div class="page page-tables-bootstrap">
+
+    <div class="container">
+        <section class="tile">
+            <center>
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font">
+                        <strong>Lista de Alumnos Inscritos del Curso</strong>
+                    </h1>
+                    <h1 class="custom-font">
+                        <strong ui-sref="app.cursos.inscripcion({id:course.id})" style="cursor: pointer;">{{course.name}}</strong>
+                    </h1>
+                </div>
+                <a class="btn btn-success btn-rounded font-bold">
+                    {{courseUsuarios}} Alumnos Inscritos
+                </a>
+            </center>
+            <div class="panel panel-default">
+                <div class="panel-heading" ui-sref="app.cursos.inscripcion({id:course.id})" style="color:black; cursor: pointer;">Personas inscritas en el curso {{course.name}}
+                </div>
+                <div class="row wrapper">
+
+
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div >
+                    <div class="table-responsive" class="row" infinite-scroll='nextPage()' infinite-scroll-disabled='params.flag' infinite-scroll-distance='1'>
+                        <table class="table table-striped b-t b-light" id="table-student-certificate1" ng-if="isPresidente()">
+                            <thead>
+                            <tr>
+                                <th style="width:20px;">Firmar</th>
+                                <th style="width:20px;">Usuario</th>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Firma Instructor</th>
+                                <th>Firma Presidente</th>
+                                <th>Certificado</th>
+                                <th style="width:30px;"></th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr ng-repeat="user in courseUsers | orderBy:created_at | filter:search">
+                                <td>
+                                    <center>
+                                        <label class="m-b-none">
+                                            <input type="checkbox" class="certificate-active" ng-true-value="1" ng-false-value="'0'" ng-change="updatecertificate2(user)" ng-if="user.certificate"  ng-init="user.checked" ng-model="user.status"  >
+                                        </label>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <select class="certificate-active" ng-change="updatecertificate3(user)" ng-init="user.checked" ng-model="user.type">
+                                            <option ng-model="user.type" value="Por demostrar un compromiso en su formación, al haber asistido al Curso denominado">
+                                                Estudiante
+                                            </option>
+                                            <option ng-model="user.type" value="Por demostrar un compromiso y brindar el apoyo como capacitador del Curso denominado">
+                                                Instructor
+                                            </option>
+                                            <option ng-model="user.type" value="Por demostrar un compromiso y brindar el apoyo en la realización del Curso denominado">
+                                                Apoyo
+                                            </option>
+                                            <option ng-model="user.type" value="Por demostrar un compromiso y brindar el apoyo como ponente del Curso denominado">
+                                                Ponente
+                                            </option>
+                                            <option ng-model="user.type" value="Por demostrar un compromiso y brindar el apoyo como conferencista del Curso denominado">
+                                                Conferencista
+                                            </option>
+                                            <option ng-model="user.type" value="Por demostrar un compromiso y brindar el apoyo como organizador del Curso denominado">
+                                                Organizador
+                                            </option>
+                                            <option ng-model="user.type" value="Por demostrar un compromiso y brindar el apoyo como jurado del Curso denominado">
+                                                Jurado
+                                            </option>
+                                            <option ng-model="user.type" value="Por demostrar un compromiso y brindar el apoyo como evaluador del Curso denominado">
+                                                Evaluador
+                                            </option>
+                                            <option ng-model="user.type" value="Por demostrar un compromiso y brindar el apoyo como coordinador general del Curso denominado">
+                                                Coordinador General
+                                            </option>
+                                        </select>
+                                    </center>
+                                </td>
+                                <td class="text">
+                                    {{$index + 1}}
+                                </td>
+                                <td class="text">
+                                    {{user.usuario.ap_pat+' '+user.usuario.ap_mat+' '+user.usuario.name}}
+                                </td>
+                                <td class="text">
+                                    <p class="label" ng-class="{'label bg-danger':user.certificate==0,'label bg-success':user.certificate==1}" >
+                                        {{user.certificate==0?"No firmado":"Firmado"}}
+                                    </p>
+                                </td>
+                                <td class="text">
+                                    <p class="label" ng-class="{'label bg-danger':user.status==0,'label bg-success':user.status==1}">
+                                        {{user.status==0?"No firmado":"Firmado"}}
+                                    </p>
+                                </td>
+                                <td class="text">
+                                    <span ng-if="((user.status)&&(user.certificate))" class="animate-if">
+                                      {{((user.status)&&(user.certificate))==0?"":"Activado"}}
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+
+                        <table class="table table-striped b-t b-light" id="table-student-certificate2" ng-if="isInstructor() || isAdmin()">
+                            <thead>
+                            <tr>
+                                <th style="width:20px;">
+                                    Firmar
+                                    <!--<label class="m-b-none">
+                                        <input type="checkbox" ng-model="user.checked" ng-init="user.checked">
+                                    </label>-->
+                                </th>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Firma del instructor</th>
+                                <th>Asistencia</th>
+                                <th style="width:30px;"></th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr ng-repeat="user in courseUsers | orderBy:created_at | filter:search">
+                                <td>
+                                    <center>
+                                        <label class="m-b-none">
+                                            <input type="checkbox" class="certificate-active" ng-true-value="1" ng-false-value="'0'" ng-change="updatecertificate(user)"  ng-init="user.checked" ng-model="user.certificate"  >
+                                        </label>
+                                    </center>
+                                </td>
+                                <td class="text">
+                                    {{$index + 1}}
+                                </td>
+                                <td class="text">
+                                    {{user.usuario.ap_pat+' '+user.usuario.ap_mat+' '+user.usuario.name}}
+                                </td>
+                                <td class="text">
+                                    <p class="label" ng-class="{'label bg-danger':user.certificate==0,'label bg-success':user.certificate==1}">
+                                        {{user.certificate==0?"No firmado":"Firmado"}}
+                                    </p>
+                                </td>
+                                <td class="text">
+                                    <span ng-if="user.certificate" class="animate-if">
+                                      {{user.certificate==0?"":"Asistió"}}
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!--
+
+<div class="page page-tables-bootstrap">
+<div class="container">
+    <section class="tile">
+        <center><div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font">
+                <strong>Lista de alumnos inscritos en el curso</strong></h1>
+        </div></center>
+        <center><h2 style="color:blue">Fecha del Curso:</h2>
+        <h3 style="color:black">{{course.start_date}}</h3>
+              <a class="btn btn-success btn-rounded font-bold">
+                {{courseUsuarios}} Alumnos Inscritos</a>
+      </center>
+  <div class="panel panel-default">
+    <div class="panel-heading" style="color:black">{{course.name}}
+    </div>
+    <div class="row wrapper">
+      <div class="col-sm-3">
+        <div class="input-group">
+          <input type="text" class="input-sm form-control" placeholder="Buscar Alumnos" ng-model="params.search">
+          <span class="input-group-btn">
+            <button class="btn btn-sm btn-default" type="button" ng-click="reloadStudents()">Buscar!</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive" class="row" infinite-scroll='nextPage()' infinite-scroll-disabled='params.flag' infinite-scroll-distance='1'>
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Fecha de inscripción</th>
+            <th style="width:30px;"></th>
+          </tr>
+        </thead>
+          <tbody>
+          <tr ng-repeat="user in courseUsers | orderBy:created_at | filter:search">
+            <td class="text">{{$index + 1}}</td>
+            <td class="text">{{user.usuario.ap_pat+' '+user.usuario.ap_mat+' '+user.usuario.name}}</td>
+            <td class="text">{{user.usuario.created_at|fromNow}}</td>
+          </tr>
+         </tbody>
+
+      </table>
+    </div>
+  </div>
+    </section>
+</div>
+</div>-->

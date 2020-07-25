@@ -1,0 +1,165 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Agregar cursos</h1>
+</div>
+<div class="wrapper-md">
+    <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false}">
+        <tab heading="Agregar Cursos" disabled="step1.$invalid" active="steps.step1" >
+
+            <p class="m-b">Por favor rellena el siguiente formulario para que puedas ofertar tú curso</p>
+
+            <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+
+            <h4>Proceso de validación</h4>
+            <form name="step1" class="form-validation">
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="alert alert-danger" ng-repeat="error in errors">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                            {{error[0]}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">Nombre del Curso</label>
+                        <input type="text" class="form-control" ng-model="curso.name"  required>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Evento</label>
+                            <select name="tipo" ng-model="curso.certificate_title"class="form-control"  required >
+                                <option selected="" disabled="" value="" >(Seleccionar)</option>
+                                <optgroup  label="Eventos ">
+                                    <option ng-model="curso.certificate_title" value="Evento" >Simposio</option>
+                                    <option ng-model="curso.certificate_title" value="Certificación">Conferencia</option>
+                                    <option ng-model="curso.certificate_title" value="Taller">Taller</option>
+                                    <option ng-model="curso.certificate_title" value="Cursos">Curso</option>
+                                    <option ng-model="curso.certificate_title" value="Diplomado">Diplomado</option>
+                                    <option ng-model="curso.certificate_title" value="Foro">Foro</option>
+                                    <option ng-model="curso.certificate_title" value="Otro">Otro</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Palabras claves</label>
+                            <input type="text" multiple class="form-control"  placeholder="Introduce las palabras claves" ng-model="curso.keywords" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Hangouts</label>
+                            <input type="text" value="http://www.google.com/" placeholder="http://www.google.com/" class="form-control"  ng-model="curso.hangouts">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Descripción</label>
+                            <textarea ng-model="curso.description"
+                                      redactor="{plugins: ['table', 'video', 'alignment', 'iconic2']}" cols="30"
+                                      rows="10" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Precio de curso</label>
+                            <input type="number" placeholder="$0.00" class="form-control" ng-model="curso.price" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Cupo minimo</label>
+                            <input type="number"
+                                   class="form-control  " ui-validate=" '$value >= 5' "
+                                   ng-model="curso.quota_min"  placeholder="mayor a 5" >
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Cupo maximo</label>
+                            <input type="number"
+                                   class="form-control " ui-validate=" '$value >= 12' "
+                                   placeholder="mayor a 12" ng-model="curso.quota_max" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Duracion</label>
+                            <input type="text" placeholder="example: 4 Horas" class="form-control"  ng-model="curso.duracion" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Tipo de Curso</label>
+                            <select ng-model="curso.typeCourse_id" class="form-control" required>
+                                <option selected="" disabled="" value="" >(Seleccionar)</option>
+                                <optgroup  label="Tipos ">
+                                    <option value="{{item.id}}" ng-repeat="item in TypeCourse">{{item.name}}</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Categoria del Curso</label>
+                            <select ng-model="curso.categoryCourse_id" class="form-control" required>
+                                <option selected="" disabled="" value="" >(Seleccionar)</option>
+                                <optgroup  label="Categoría">
+                                    <option value="{{item.id}}" ng-repeat="item in CategoryCourse">{{item.name}}</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Fecha de inicio de curso</label>
+
+                                <input class="form-control" ng-model="curso.start_date" type="datetime-local" required>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Fecha Final de curso</label>
+                            <input class="form-control" ng-model="curso.end_date" type="datetime-local" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+
+                        <ng-map center="{{center}}" zoom="15">
+                            <marker
+                                    position="{{center}}" ,
+                                    draggable="true"
+                                    icon="{url:'/img/map.png'}"
+                                    animation="BOUNCE"
+                                    on-mouseup='setNewPosition()'
+                            ></marker>
+                        </ng-map>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="">Direccón</label>
+                        <div class="form-group">
+                            <textarea ng-model="curso.direction" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                  </div>
+            </form>
+            <div class="m-t m-b">
+                <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step2=80">Siguiente Página</button>
+                <!--<button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded"  ng-click="saveCourse()">Next</button>-->
+            </div>
+        </tab>
+        <tab heading="Cargar Archivos" disabled="step1.$invalid" active="steps.step2" select="steps.percent=30">
+            <form name="step2" class="form-validation">
+                <h3>Carga temario y poster del curso para poder continuar con la oferta de tu curso</h3>
+                <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+                <p class="btn-group-justified">Para poder continuar con el registro del curso, es necesario adjuntar un poster y temario de información del curso, presiona en el botón cargar archivos para continuar con el registro de tu curso</p>
+
+            </form>
+                <div class="m-t m-b">
+                    <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step1=true">Página anterior</button>
+                    <button type="submit" ng-disabled="step2.$invalid" class="btn btn-default btn-rounded" ng-click="saveCourse()">Cargar archivos</button>
+                </div>
+        </tab>
+    </tabset>
+</div>

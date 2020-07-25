@@ -1,0 +1,97 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <div class="pageheader">
+    </div>
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <h1 class="custom-font right">Agregar
+                    <strong>Artículo</strong></h1>
+            </div>
+                    <form name="form" class="form-validation">
+                        <div class="form-group">
+                            <div class="alert alert-danger" ng-repeat="error in errors">
+                                <button type="button" class="close" data-dismiss="alert"
+                                        aria-hidden="true">&times;</button>
+                                {{error[0]}}
+                            </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Nombre de la convocatoria</label>
+                                    <select ng-model="articulo.convened_id" class="form-control" required>
+                                        <option value="{{item.id}}" ng-repeat="item in Convened">{{item.name}}</option>
+                                  </select>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Línea de investigación</label>
+                                    <select ng-model="articulo.linesofInvestigation_id" class="form-control" required>
+                                        <option value="{{item.id}}" ng-repeat="item in LinesofInvestigation">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Título del artículo</label>
+                                    <input type="text" class="form-control" ng-model="articulo.name" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                     <label for="">Palabras claves</label>
+                                     <input multiple class="form-control" placeholder="Introduce las palabras claves" data-role="tagsinput" ng-model="articulo.keywords" required>
+                                 </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="">Resumen</label>
+                                <textarea ng-model="articulo.summary"
+                                      redactor="{plugins: ['table', 'video', 'alignment', 'iconic2']}" cols="30"
+                                      rows="10" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="">Abstract</label>
+                            <textarea ng-model="articulo.abstract"
+                                    redactor="{plugins: ['table', 'video', 'alignment', 'iconic2']}" cols="30"
+                                    rows="10" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Autor(es)</label>
+                                    <input type="text" placeholder="Nombre(es) Apellido(os), Nombre(es) Apellido(os), etc." class="form-control" ng-model="articulo.author" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Contenido</label>
+                                    <input type="text" class="form-control" ng-model="articulo.content" required>
+                                </div>
+                             </div>
+                        <!--
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Contenido</label>
+                                 <textarea id="articulo.content" name="articulo.content" type="text" class="form-control" ng-model="articulo.content" required></textarea>
+                                <script> CKEDITOR.replace('articulo.content'); </script>
+                                </div>
+                            </div>
+                        -->
+
+                        <div class="col-lg-4">
+                            <button type="button" ng-click="saveArticle()" class="btn m-b-xs btn-info"  ng-disabled="form.$invalid">
+                                <i class="fa fa-save"></i>  Guardar
+                            </button>
+                        </div>
+                 </form>
+        </section>
+
+    </div>
+</div>
+

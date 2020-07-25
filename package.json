@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "",
+    "gulp-uglify": "^1.5.3",
+    "phantomjs": ""
+  },
+  "dependencies": {
+    "gulp-concat-css": "^2.3.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^2.2.0",
+    "install": "^0.7.3",
+    "npm": "^3.10.10"
+  }
+}

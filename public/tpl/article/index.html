@@ -1,0 +1,143 @@
+<div class="wrapper-md lter">
+    <script type="text/ng-template" id="ArticleModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title custom-font">Actualizando Artículo</h3>
+        </div>
+                <form class="form-validation">
+                    <div class="form-group">
+                        <div class="alert alert-danger" ng-repeat="error in errors">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                            {{error[0]}}
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="">Nombre de la convocatoria</label>
+                            <select ng-model="articulo.convened_id" class="form-control" required>
+                                <option value="{{item.id}}" ng-repeat="item in Convened">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="">Línea de investigación</label>
+                            <select ng-model="articulo.linesofInvestigation_id" class="form-control" required>
+                                <option value="{{item.id}}" ng-repeat="item in LinesofInvestigation">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="">Título del artículo</label>
+                            <input type="text" class="form-control" ng-model="articulo.name" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="">Palabras claves</label>
+                            <input class="form-control" data-role="tagsinput" ng-model="articulo.keywords" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="">Status</label>
+                            <select ng-model="articulo.status" class="form-control">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Resumen</label>
+                                <textarea ng-model="articulo.summary"
+                                          redactor="{plugins: ['table', 'video', 'alignment', 'iconic2']}" cols="30"
+                                          rows="10" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Abstract</label>
+                            <textarea ng-model="articulo.abstract"
+                                      redactor="{plugins: ['table', 'video', 'alignment', 'iconic2']}" cols="30"
+                                      rows="10" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="">Autor(es)</label>
+                            <input type="text" class="form-control" ng-model="articulo.author" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="">Contenido</label>
+                            <input type="text" class="form-control" ng-model="articulo.content" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="col-lg-4">
+                <button class="btn w-xs btn-danger btn-ef btn-ef-4 btn-ef-4c" ng-click="cancel()"><i
+                        class="fa fa-arrow-left"></i> Cancelar
+                <button class="btn w-xs btn-success btn-ef btn-ef-3 btn-ef-3c" ng-click="ok()"><i
+                        class="fa fa-arrow-right"></i> Guardar
+                </button>
+            </div>
+            </button>
+        </div>
+    </script>
+    <h1><strong>Mis Artículos</strong></h1>
+<ul class="controls">
+    <a ui-sref="app.revista.articuloadd"  class="btn btn-primary btn-success btn-group-lg"><i class="fa fa-plus"></i>
+        Agregar</a>
+</ul>
+<div class="tile-body table-custom">
+    <div class="row">
+        <div class="col-lg-8">
+        </div>
+
+        <div class="col-lg-4">
+            <div class="form-group right">
+                <label for="">Buscar</label>
+                <input type="text" class="form-control" placeholder="Buscar" ng-model="params.search">
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Status</th>
+                <th>Fecha de creación</th>
+                <th>Administrar</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="item in articulos | filter : params.search">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <th><p class="label"
+                       ng-class="{'label bg-danger':item.status==0,'label bg-success':item.status==1}">
+                    {{item.status==0?"Inactivo":"Activo"}}</p></th>
+                <td>{{item.created_at}}</td>
+                <td>
+                   <a class="text-success" ng-click="open(item)"><i class="fa fa-pencil">
+                        Actualizar</i></a>
+                    <a class="text-blue"><i class="fa fa-eye"> Ver</i></a>
+
+                    <a class="text-danger" ng-click="remove(item)"><i class="fa fa-trash"> Eliminar</i></a>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

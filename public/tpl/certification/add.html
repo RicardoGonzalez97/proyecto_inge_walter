@@ -1,0 +1,55 @@
+<div class="page page-tables-bootstrap">
+    <!-- page header -->
+    <!-- /page header -->
+    <!-- page content -->
+    <div class="pagecontent">
+        <section class="tile">
+            <div class="tile-header dvd dvd-btm">
+                <h1 class="custom-font right">Agregar
+                    <strong> Certificación</strong></h1>
+
+            </div>
+            <form name="form" class="form-validation">
+                <div class="form-group">
+                    <div class="alert alert-danger" ng-repeat="error in errors">
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-hidden="true">&times;</button>
+                        {{error[0]}}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Institución que otorgó el certificado</label>
+                        <input type="text" class="form-control" ng-model="certification.institution">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Nombre o descripción del certificado</label>
+                        <input type="text" class="form-control" ng-model="certification.name">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Fecha de certificación</label>
+                        <input type="date" class="form-control" ng-model="certification.date">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="">Fecha límite de la certificación</label>
+                        <input type="date" class="form-control" ng-model="certification.finish_date">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <button type="button" ng-click="saveCertification()" class="btn m-b-xs btn-info"  ng-disabled="form.$invalid">
+                        <i class="fa fa-save"></i>  Guardar
+                    </button>
+                </div>
+            </form>
+
+
+        </section>
+
+    </div>
+</div>
